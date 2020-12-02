@@ -63,27 +63,25 @@
 		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("./fonts/ttf/IRANSansWeb.ttf")
 			format("truetype");
 }
-
-root {
-	--blue: rgb(21, 101, 192);
+body {
+	font-size: 16px;
+}
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box;
+	font-family: IRANSans, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	--blue: rgb(30, 129, 206);
 	--bg-white: rgb(249, 247, 246);
 	--bg-grey: rgb(246, 246, 246);
 	--font-black: rgb(32, 32, 32);
 	--font-grey: rgb(102, 102, 102);
 }
 
-body {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-		monospace;
+	font-family: monospace;
 }

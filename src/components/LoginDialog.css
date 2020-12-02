@@ -1,0 +1,141 @@
+.login-dialog-bg {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.404);
+	backdrop-filter: blur(5px);
+	transition: transform 0.3s;
+}
+
+.disappear {
+	transform: translateY(-100vh);
+}
+
+.login-dialog {
+	width: 80%;
+	height: 70%;
+	background-color: white;
+	box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.212);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.login-dialog img {
+	width: 100%;
+	height: 50%;
+	object-fit: cover;
+}
+
+.login-dialog .form-div {
+	width: 100%;
+	height: 50%;
+	position: relative;
+	overflow: hidden;
+}
+
+.login-dialog .form-div .inputs {
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 200%;
+	height: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	transition: left 0.3s;
+	overflow: hidden;
+}
+
+.login-dialog .form-div .inputs .input {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-left: 7%;
+	padding-right: 7%;
+}
+
+.login-dialog .form-div .inputs label {
+	margin-bottom: 20px;
+}
+
+.login-dialog .form-div .inputs input {
+	width: 100%;
+	direction: rtl;
+	padding: 0 15px;
+	height: 40px;
+	outline: none;
+}
+
+.login-dialog .form-div .inputs input:focus {
+	outline: none;
+	border: 1px solid var(--blue);
+}
+
+.login-dialog .form-div .inputs button {
+	margin-top: 25px;
+	background: none;
+	box-shadow: none;
+	border: none;
+	text-shadow: none;
+	align-self: flex-start;
+	outline: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+.login-dialog .form-div .inputs button:hover {
+	color: var(--blue);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.login-dialog .form-div .inputs div div {
+	width: 100%;
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+}
+
+/* Handling different width sizes */
+/* Any device smaller than 600px */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.login-dialog {
+		flex-direction: row;
+	}
+
+	.login-dialog img {
+		width: 50%;
+		height: 100%;
+	}
+
+	.login-dialog .form-div {
+		width: 50%;
+		height: 100%;
+		border: 15px solid balck;
+	}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
