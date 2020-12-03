@@ -63,9 +63,7 @@
 		/* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url("./fonts/ttf/IRANSansWeb.ttf")
 			format("truetype");
 }
-body {
-	font-size: 16px;
-}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -81,7 +79,11 @@ body {
 	--font-black: rgb(32, 32, 32);
 	--font-grey: rgb(102, 102, 102);
 }
-
+body {
+	font-size: 16px;
+	background-color: var(--bg-white);
+	color: var(--font-black);
+}
 code {
 	font-family: monospace;
 }

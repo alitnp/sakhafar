@@ -3,9 +3,14 @@ import { useState } from "react";
 import HeaderBar from "./components/HeaderBar";
 import Header from "./components/Header.js";
 import LoginDialog from "./components/LoginDialog.js";
+import Info from "./components/Info.js";
+import Miners from "./components/Miners.js";
+
+import infoData from "./info.json";
+import minersData from "./miners.json";
 
 function App() {
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(true);
 	const [appearLoginDialog, setAppearLoginDialog] = useState(false);
 
 	const handleLogin = () => {
@@ -30,6 +35,8 @@ function App() {
 			/>
 			<HeaderBar loggedIn={loggedIn} login={handleLogin} />
 			<Header />
+			<Info info={loggedIn && infoData} />
+			<Miners miners={minersData} info={loggedIn && infoData.miners} />
 		</div>
 	);
 }

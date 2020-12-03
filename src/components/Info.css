@@ -1,0 +1,68 @@
+.info-container {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.info-container h3 {
+	text-align: center;
+}
+
+.info-container .info-grid {
+	margin-top: 20px;
+	padding: 35px;
+	border: 1px solid var(--font-grey);
+	background-color: #fff;
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.226);
+	display: flex;
+	flex-direction: column;
+	direction: rtl;
+}
+
+.info-container .info-grid .info {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.info-container .info-grid .info:last-child {
+	margin-bottom: 0;
+}
+
+/* Handling different width sizes */
+/* Any device smaller than 600px */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.info-container .info-grid {
+		flex-direction: row;
+		flex-wrap: wrap;
+		padding: 25px;
+	}
+	.info-container .info-grid .info {
+		flex-basis: 45%;
+		margin-right: 2.5%;
+		margin-left: 2.5%;
+	}
+	.info-container .info-grid .info:nth-child(n + 2) {
+		margin-bottom: 0;
+	}
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.info-container .info-grid .info {
+		flex-basis: 40%;
+		margin-right: 5%;
+		margin-left: 5%;
+	}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.info-container .info-grid .info {
+		flex-basis: 30%;
+		margin-right: 10%;
+		margin-left: 10%;
+	}
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

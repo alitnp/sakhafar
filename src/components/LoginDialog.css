@@ -28,13 +28,13 @@
 
 .login-dialog img {
 	width: 100%;
-	height: 50%;
+	height: 40%;
 	object-fit: cover;
 }
 
 .login-dialog .form-div {
 	width: 100%;
-	height: 50%;
+	height: 60%;
 	position: relative;
 	overflow: hidden;
 }

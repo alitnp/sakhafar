@@ -12,7 +12,7 @@ export default function HeaderBar(props) {
 			</div>
 			<div className="login-user">
 				<div onClick={!props.loggedIn && props.login}>
-					<span>{props.loggedIn ? "علی اردبیلی" : "ورود"}</span>
+					<span>{props.loggedIn ? "علی محمودی" : "ورود"}</span>
 				</div>
 				{props.loggedIn && (
 					<img onClick={props.login} src={logout} alt="logout button" />
