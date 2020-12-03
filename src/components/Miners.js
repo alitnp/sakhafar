@@ -32,7 +32,7 @@ export default function Miners(props) {
 
 	const [tableData, setTableData] = useState(tableCreator(info, props.miners));
 
-	React.useEffect(() => {});
+	React.useEffect(() => {}, [props.loggedIn]);
 	return (
 		<div className="miners-container">
 			<div className="miners-grid">
@@ -54,11 +54,15 @@ export default function Miners(props) {
 							<th>تعداد</th>
 						</tr>
 					</thead>
-					<tbody>{tableData}</tbody>
+					<tbody>{props.loggedIn && tableData}</tbody>
 				</table>
 				<div className="">
-					<h4>{`  مجموع قدرت پردازش :  TH ${allThs}  `}</h4>
-					<h4>{`مجموع توان مصرفی : ${allPowers} watts`}</h4>
+					<h4>{`  مجموع قدرت پردازش :  TH ${
+						props.loggedIn ? allThs : 0
+					}  `}</h4>
+					<h4>{`مجموع توان مصرفی : ${
+						props.loggedIn ? allPowers : 0
+					} watts`}</h4>
 				</div>
 				<div>
 					<p>افزودن دستگاه جدید</p>

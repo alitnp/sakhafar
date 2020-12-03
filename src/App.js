@@ -10,7 +10,7 @@ import infoData from "./info.json";
 import minersData from "./miners.json";
 
 function App() {
-	const [loggedIn, setLoggedIn] = useState(true);
+	const [loggedIn, setLoggedIn] = useState(false);
 	const [appearLoginDialog, setAppearLoginDialog] = useState(false);
 
 	const handleLogin = () => {
@@ -36,7 +36,7 @@ function App() {
 			<HeaderBar loggedIn={loggedIn} login={handleLogin} />
 			<Header />
 			<Info info={loggedIn && infoData} />
-			<Miners miners={minersData} info={loggedIn && infoData.miners} />
+			<Miners miners={minersData} info={infoData.miners} loggedIn={loggedIn} />
 		</div>
 	);
 }
