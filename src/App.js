@@ -5,6 +5,7 @@ import Header from "./components/Header.js";
 import LoginDialog from "./components/LoginDialog.js";
 import Info from "./components/Info.js";
 import Miners from "./components/Miners.js";
+import Profit from "./components/Profit.js";
 
 import infoData from "./info.json";
 import minersData from "./miners.json";
@@ -47,6 +48,7 @@ function App() {
 				loggedIn={loggedIn}
 				onTotalChange={handleTotalChange}
 			/>
+			<Profit/>
 		</div>
 	);
 }
