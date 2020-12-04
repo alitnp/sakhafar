@@ -4,6 +4,8 @@ import "./Miners.css";
 
 const tableCreator = (info, miners) => {
 	let key = 0;
+	allThs = 0;
+	allPowers = 0;
 	const finalData = info.map((element) => {
 		key++;
 		allThs = allThs + miners[element.id].th * element.qty;
@@ -32,7 +34,12 @@ export default function Miners(props) {
 
 	const [tableData, setTableData] = useState(tableCreator(info, props.miners));
 
-	React.useEffect(() => {}, [props.loggedIn]);
+	useEffect(() => {}, [props.loggedIn]);
+
+	useEffect(() => {
+		const totals = props.loggedIn ? [allThs, allPowers] : [0, 0];
+		props.onTotalChange(totals);
+	}, [tableData]);
 	return (
 		<div className="miners-container">
 			<div className="miners-grid">
@@ -58,79 +65,81 @@ export default function Miners(props) {
 				</table>
 				<div className="">
 					<h4>{`  مجموع قدرت پردازش :  TH ${
-						props.loggedIn ? allThs : 0
+						props.loggedIn ? allThs.toLocaleString() : 0
 					}  `}</h4>
 					<h4>{`مجموع توان مصرفی : ${
-						props.loggedIn ? allPowers : 0
-					} watts`}</h4>
+						props.loggedIn ? allPowers.toLocaleString() : 0
+					} Watts`}</h4>
 				</div>
-				<div>
-					<p>افزودن دستگاه جدید</p>
+				{props.loggedIn && (
 					<div>
-						<label htmlFor="addMinerNmae">نوع دستگاه</label>
-						<select
-							name="addMinerName"
-							id="addMinerName"
-							onChange={(e) => {
-								const newAddMiner = { id: e.target.value, qty: addMiner.qty };
-								addMiner = newAddMiner;
-							}}
-						>
-							<option key="0" value="">
-								انتخاب کنید
-							</option>
-							{Object.keys(props.miners).map((miner) => {
-								const name = props.miners[miner].name;
-								return (
-									<option key={name} value={miner}>
-										{name}
-									</option>
-								);
-							})}
-						</select>
-						<label htmlFor="addMinerQty">تعداد</label>
-						<input
-							type="number"
-							id="addMinerQty"
-							name="addMinerQty"
-							onChange={(e) => {
-								const qty = parseInt(e.target.value);
-								const newAddMiner = {
-									id: addMiner.id,
-									qty: qty,
-								};
-								addMiner = newAddMiner;
-							}}
-						/>
-						<button
-							onClick={() => {
-								if (addMiner.id !== "" && addMiner.qty !== 0) {
-									let wasThere = -1;
-									let newInfo = info;
+						<p>افزودن دستگاه جدید</p>
+						<div>
+							<label htmlFor="addMinerNmae">نوع دستگاه</label>
+							<select
+								name="addMinerName"
+								id="addMinerName"
+								onChange={(e) => {
+									const newAddMiner = { id: e.target.value, qty: addMiner.qty };
+									addMiner = newAddMiner;
+								}}
+							>
+								<option key="0" value="" select>
+									انتخاب کنید
+								</option>
+								{Object.keys(props.miners).map((miner) => {
+									const name = props.miners[miner].name;
+									return (
+										<option key={name} value={miner}>
+											{name}
+										</option>
+									);
+								})}
+							</select>
+							<label htmlFor="addMinerQty">تعداد</label>
+							<input
+								type="number"
+								id="addMinerQty"
+								name="addMinerQty"
+								onChange={(e) => {
+									const qty = parseInt(e.target.value);
+									const newAddMiner = {
+										id: addMiner.id,
+										qty: qty,
+									};
+									addMiner = newAddMiner;
+								}}
+							/>
+							<button
+								onClick={() => {
+									if (addMiner.id !== "" && addMiner.qty !== 0) {
+										let wasThere = -1;
+										let newInfo = info;
 
-									newInfo.forEach((element) => {
-										if (element.id === addMiner.id) {
-											wasThere = newInfo.indexOf(element);
+										newInfo.forEach((element) => {
+											if (element.id === addMiner.id) {
+												wasThere = newInfo.indexOf(element);
+											}
+										});
+										if (wasThere === -1) {
+											newInfo = [...info, addMiner];
+										} else {
+											newInfo[wasThere] = {
+												id: addMiner.id,
+												qty: newInfo[wasThere].qty + addMiner.qty,
+											};
 										}
-									});
-									if (wasThere === -1) {
-										newInfo = [...info, addMiner];
-									} else {
-										newInfo[wasThere] = {
-											id: addMiner.id,
-											qty: newInfo[wasThere].qty + addMiner.qty,
-										};
+										info = newInfo;
+										const newTableData = tableCreator(info, props.miners);
+										setTableData(newTableData);
 									}
-									info = newInfo;
-									const newTableData = tableCreator(info, props.miners);
-									setTableData(newTableData);
-								}
-							}}
-						>
-							+ افزودن{" "}
-						</button>
+								}}
+							>
+								+ افزودن{" "}
+							</button>
+						</div>
 					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	);
