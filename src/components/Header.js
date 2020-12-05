@@ -2,6 +2,7 @@ import "./Header.css";
 import irLogo from "../images/iran.b50c6db5.png";
 
 export default function Header() {
+	
 	return (
 		<div className="header">
 			<div className="title">

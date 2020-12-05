@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import HeaderBar from "./components/HeaderBar";
 import Header from "./components/Header.js";
@@ -13,7 +13,7 @@ import minersData from "./miners.json";
 function App() {
 	const [loggedIn, setLoggedIn] = useState(true);
 	const [appearLoginDialog, setAppearLoginDialog] = useState(false);
-	const [totals, setTotals] = useState([0, 0]);
+	const [totals, setTotals] = useState({ hash: 0, power: 0 });
 
 	const handleTotalChange = (newTotals) => {
 		setTotals(newTotals);
@@ -48,7 +48,7 @@ function App() {
 				loggedIn={loggedIn}
 				onTotalChange={handleTotalChange}
 			/>
-			<Profit/>
+			<Profit totals={totals} />
 		</div>
 	);
 }

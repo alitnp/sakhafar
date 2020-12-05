@@ -1,0 +1,12 @@
+.profit-container {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.226);
+	margin-top: 25px;
+	padding: 35px;
+	border: 1px solid var(--font-grey);
+	background-color: #fff;
+	direction: rtl;
+}

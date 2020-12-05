@@ -4,6 +4,7 @@ import logo from "../icons/logo.svg";
 import logout from "../icons/logout.svg";
 
 export default function HeaderBar(props) {
+	
 	return (
 		<header className="headerBar">
 			<div className="logo">

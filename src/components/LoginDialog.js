@@ -4,6 +4,7 @@ import "./LoginDialog.css";
 import loginImage from "../images/loginImage.jpg";
 
 export default function LoginDialog(props) {
+	
 	const [phone, setPhone] = useState(false);
 	const [password, setPassword] = useState(false);
 	return (

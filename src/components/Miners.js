@@ -30,14 +30,16 @@ let info = "";
 let addMiner = { id: "", qty: 0 };
 
 export default function Miners(props) {
+	
 	if (info === "") info = props.info;
 
-	const [tableData, setTableData] = useState(tableCreator(info, props.miners));
+	const initialTable = tableCreator(info, props.miners);
+	const [tableData, setTableData] = useState(initialTable);
 
 	useEffect(() => {}, [props.loggedIn]);
 
 	useEffect(() => {
-		const totals = props.loggedIn ? [allThs, allPowers] : [0, 0];
+		const totals = props.loggedIn ? { hash: allThs, power: allPowers } : [0, 0];
 		props.onTotalChange(totals);
 	}, [tableData]);
 	return (
@@ -84,7 +86,7 @@ export default function Miners(props) {
 									addMiner = newAddMiner;
 								}}
 							>
-								<option key="0" value="" select>
+								<option key="0" value="" select="true">
 									انتخاب کنید
 								</option>
 								{Object.keys(props.miners).map((miner) => {
