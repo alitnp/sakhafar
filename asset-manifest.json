@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/sakhafar/static/css/main.c8837766.chunk.css",
-    "main.js": "/sakhafar/static/js/main.be6a2a71.chunk.js",
-    "main.js.map": "/sakhafar/static/js/main.be6a2a71.chunk.js.map",
-    "runtime-main.js": "/sakhafar/static/js/runtime-main.183c2097.js",
-    "runtime-main.js.map": "/sakhafar/static/js/runtime-main.183c2097.js.map",
-    "static/js/2.bab17099.chunk.js": "/sakhafar/static/js/2.bab17099.chunk.js",
-    "static/js/2.bab17099.chunk.js.map": "/sakhafar/static/js/2.bab17099.chunk.js.map",
-    "static/js/3.ee8df5b4.chunk.js": "/sakhafar/static/js/3.ee8df5b4.chunk.js",
-    "static/js/3.ee8df5b4.chunk.js.map": "/sakhafar/static/js/3.ee8df5b4.chunk.js.map",
-    "index.html": "/sakhafar/index.html",
-    "static/css/main.c8837766.chunk.css.map": "/sakhafar/static/css/main.c8837766.chunk.css.map",
-    "static/js/2.bab17099.chunk.js.LICENSE.txt": "/sakhafar/static/js/2.bab17099.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/sakhafar/static/media/IRANSansWeb_UltraLight.99c7469d.ttf",
-    "static/media/loginImage.a58537b8.jpg": "/sakhafar/static/media/loginImage.a58537b8.jpg",
-    "static/media/logo.d7b09013.svg": "/sakhafar/static/media/logo.d7b09013.svg",
-    "static/media/logout.d5e5f140.svg": "/sakhafar/static/media/logout.d5e5f140.svg"
+    "main.css": "./static/css/main.783eea4a.chunk.css",
+    "main.js": "./static/js/main.5e59e544.chunk.js",
+    "main.js.map": "./static/js/main.5e59e544.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.ee55cf91.js",
+    "runtime-main.js.map": "./static/js/runtime-main.ee55cf91.js.map",
+    "static/js/2.bab17099.chunk.js": "./static/js/2.bab17099.chunk.js",
+    "static/js/2.bab17099.chunk.js.map": "./static/js/2.bab17099.chunk.js.map",
+    "static/js/3.ee8df5b4.chunk.js": "./static/js/3.ee8df5b4.chunk.js",
+    "static/js/3.ee8df5b4.chunk.js.map": "./static/js/3.ee8df5b4.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.783eea4a.chunk.css.map": "./static/css/main.783eea4a.chunk.css.map",
+    "static/js/2.bab17099.chunk.js.LICENSE.txt": "./static/js/2.bab17099.chunk.js.LICENSE.txt",
+    "static/media/index.css": "./static/media/IRANSansWeb_UltraLight.99c7469d.ttf",
+    "static/media/loginImage.a58537b8.jpg": "./static/media/loginImage.a58537b8.jpg",
+    "static/media/logo.d7b09013.svg": "./static/media/logo.d7b09013.svg",
+    "static/media/logout.d5e5f140.svg": "./static/media/logout.d5e5f140.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.183c2097.js",
+    "static/js/runtime-main.ee55cf91.js",
     "static/js/2.bab17099.chunk.js",
-    "static/css/main.c8837766.chunk.css",
-    "static/js/main.be6a2a71.chunk.js"
+    "static/css/main.783eea4a.chunk.css",
+    "static/js/main.5e59e544.chunk.js"
   ]
 }
