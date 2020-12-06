@@ -6,18 +6,16 @@ import rialRate from "../modules/rialRate.js";
 import "./Profit.css";
 
 export default function Profit(props) {
-	const { power } = props.totals;
+	const { power, hash } = props.totals;
 	const [calcResult, SetCalcResult] = useState({});
 	const { price, dailyProfit } = calcResult;
 
 	useEffect(() => {
 		const calcResultFunc = async () => {
-			const result = await profitCalc(
-				"bitcoin",
-				`${props.totals.hash * 1000000000000}`
-			);
+			const result = await profitCalc();
 			const rialPrice = await rialRate();
 			result.rialRate = rialPrice;
+			result.dailyProfit = result.dailyProfit * hash;
 			SetCalcResult(result);
 		};
 		calcResultFunc();
@@ -27,17 +25,21 @@ export default function Profit(props) {
 		<div className="profit-container">
 			<h4>محاسبه درآمد و مقدار مصرف برق</h4>
 			<div className="initial-info">
-				<span>
+				<p>
 					{`قیمت بیتکوین به دلار : `}
 					{price && price.toLocaleString()}$
-				</span>
-				<span>
+				</p>
+				<p>
 					{`قیمت بیتکوین یه ریال : `}
 					{(price * calcResult.rialRate)
 						.toFixed(0)
 						.toString()
 						.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-				</span>
+				</p>
+				<p>
+					{`درآمد روزانه به بیتکوین : `}
+					{calcResult.dailyProfit} BTC
+				</p>
 			</div>
 		</div>
 	);

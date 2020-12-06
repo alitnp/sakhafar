@@ -30,7 +30,6 @@ let info = "";
 let addMiner = { id: "", qty: 0 };
 
 export default function Miners(props) {
-	
 	if (info === "") info = props.info;
 
 	const initialTable = tableCreator(info, props.miners);
@@ -39,7 +38,9 @@ export default function Miners(props) {
 	useEffect(() => {}, [props.loggedIn]);
 
 	useEffect(() => {
-		const totals = props.loggedIn ? { hash: allThs, power: allPowers } : [0, 0];
+		const totals = props.loggedIn
+			? { hash: allThs, power: allPowers }
+			: { hash: 0, power: 0 };
 		props.onTotalChange(totals);
 	}, [tableData]);
 	return (
