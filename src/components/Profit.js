@@ -15,7 +15,6 @@ export default function Profit(props) {
 			const result = await profitCalc();
 			const rialPrice = await rialRate();
 			result.rialRate = rialPrice;
-			result.dailyProfit = result.dailyProfit * hash;
 			SetCalcResult(result);
 		};
 		calcResultFunc();
@@ -38,7 +37,7 @@ export default function Profit(props) {
 				</p>
 				<p>
 					{`درآمد روزانه به بیتکوین : `}
-					{calcResult.dailyProfit} BTC
+					{(dailyProfit * hash).toFixed(10)} BTC
 				</p>
 			</div>
 		</div>

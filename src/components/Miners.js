@@ -38,11 +38,11 @@ export default function Miners(props) {
 	useEffect(() => {}, [props.loggedIn]);
 
 	useEffect(() => {
-		const totals = props.loggedIn
-			? { hash: allThs, power: allPowers }
-			: { hash: 0, power: 0 };
+		const totals = { hash: allThs, power: allPowers };
+
 		props.onTotalChange(totals);
 	}, [tableData]);
+
 	return (
 		<div className="miners-container">
 			<div className="miners-grid">
