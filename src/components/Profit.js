@@ -1,25 +1,26 @@
 import { useState, useEffect } from "react";
 
+import Table from "./ProfitTable.js";
+
 import profitCalc from "../modules/profitCalc.js";
-import rialRate from "../modules/rialRate.js";
+import rialRateCalc from "../modules/rialRate.js";
 
 import "./Profit.css";
 
 export default function Profit(props) {
 	const { power, hash } = props.totals;
 	const [calcResult, SetCalcResult] = useState({});
-	const { price, dailyProfit } = calcResult;
+	const { price, dailyProfit, rialRate } = calcResult;
 
 	useEffect(() => {
 		const calcResultFunc = async () => {
 			const result = await profitCalc();
-			const rialPrice = await rialRate();
+			const rialPrice = await rialRateCalc();
 			result.rialRate = rialPrice;
 			SetCalcResult(result);
 		};
 		calcResultFunc();
-	}, [props]);
-
+	}, []);
 	return (
 		<div className="profit-container">
 			<h4>محاسبه درآمد و مقدار مصرف برق</h4>
@@ -30,16 +31,13 @@ export default function Profit(props) {
 				</p>
 				<p>
 					{`قیمت بیتکوین یه ریال : `}
-					{(price * calcResult.rialRate)
+					{(price * rialRate)
 						.toFixed(0)
 						.toString()
 						.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 				</p>
-				<p>
-					{`درآمد روزانه به بیتکوین : `}
-					{(dailyProfit * hash).toFixed(10)} BTC
-				</p>
 			</div>
+			<Table tData={{ power, hash, dailyProfit, price, rialRate }} />
 		</div>
 	);
 }
