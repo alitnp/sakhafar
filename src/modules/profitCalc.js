@@ -20,7 +20,7 @@ export default async function profitCalc(
 	});
 
 	const price = res.data.exchanges[0].buyPrice;
-	const dailyProfit = res.data.rewardsInDay;
+	const dailyProfit = res.data.rewardsInDay.toFixed(8);
 
 	sessionStorage.price = price;
 	sessionStorage.dailyProfit = dailyProfit;
