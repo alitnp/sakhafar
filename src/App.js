@@ -11,7 +11,7 @@ import infoData from "./info.json";
 import minersData from "./miners.json";
 
 function App() {
-	const [loggedIn, setLoggedIn] = useState(true);
+	const [loggedIn, setLoggedIn] = useState(false);
 	const [appearLoginDialog, setAppearLoginDialog] = useState(false);
 	const [totals, setTotals] = useState({ hash: 0, power: 0 });
 
@@ -48,7 +48,7 @@ function App() {
 				loggedIn={loggedIn}
 				onTotalChange={handleTotalChange}
 			/>
-			<Profit totals={totals} />
+			<Profit totals={totals} loggedIn={loggedIn} />
 		</div>
 	);
 }

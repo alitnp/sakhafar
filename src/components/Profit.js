@@ -9,7 +9,11 @@ import "./Profit.css";
 
 export default function Profit(props) {
 	const { power, hash } = props.totals;
-	const [calcResult, SetCalcResult] = useState({});
+	const [calcResult, SetCalcResult] = useState({
+		price: 18000,
+		dailyProfit: 0.00000693,
+		rialRate: 250000,
+	});
 	const { price, dailyProfit, rialRate } = calcResult;
 
 	useEffect(() => {
@@ -37,7 +41,9 @@ export default function Profit(props) {
 						.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 				</p>
 			</div>
-			<Table tData={{ power, hash, dailyProfit, price, rialRate }} />
+			{props.loggedIn && (
+				<Table tData={{ power, hash, dailyProfit, price, rialRate }} />
+			)}
 		</div>
 	);
 }

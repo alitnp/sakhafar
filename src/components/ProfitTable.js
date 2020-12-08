@@ -29,7 +29,7 @@ export default function ProfitTable(props) {
 								setPoolCost(100);
 								return;
 							}
-							if (value < 100) {
+							if (value < 0) {
 								setPoolCost(0);
 								return;
 							}
