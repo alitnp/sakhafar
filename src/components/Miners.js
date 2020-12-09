@@ -43,6 +43,8 @@ export default function Miners(props) {
 		props.onTotalChange(totals);
 	}, [tableData]);
 
+	const [collapsed, setCollapsed] = useState(false);
+
 	return (
 		<div className="miners-container">
 			<div className="miners-grid">
@@ -54,93 +56,108 @@ export default function Miners(props) {
 					متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه
 					درصد گذشته.
 				</p>
-				<table>
-					<thead>
-						<tr>
-							<th>#</th>
-							<th>نام دستگاه</th>
-							<th> قدرت پردازش هر دستگاه</th>
-							<th>توان مصرفی هر دستگاه</th>
-							<th>تعداد</th>
-						</tr>
-					</thead>
-					<tbody>{props.loggedIn && tableData}</tbody>
-				</table>
-				<div className="">
-					<h4>{`  مجموع قدرت پردازش :  TH ${
+				<div className="table-container">
+					<table>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>نام دستگاه</th>
+								<th> قدرت پردازش هر دستگاه</th>
+								<th>توان مصرفی هر دستگاه</th>
+								<th>تعداد</th>
+							</tr>
+						</thead>
+						<tbody>{props.loggedIn && tableData}</tbody>
+					</table>
+				</div>
+				<div className="table-totals">
+					<p>{`  مجموع قدرت پردازش :  TH ${
 						props.loggedIn ? allThs.toLocaleString() : 0
-					}  `}</h4>
-					<h4>{`مجموع توان مصرفی : ${
+					}  `}</p>
+					<p>{`مجموع توان مصرفی : ${
 						props.loggedIn ? allPowers.toLocaleString() : 0
-					} Watts`}</h4>
+					} Watts`}</p>
 				</div>
 				{props.loggedIn && (
-					<div>
-						<p>افزودن دستگاه جدید</p>
-						<div>
-							<label htmlFor="addMinerNmae">نوع دستگاه</label>
-							<select
-								name="addMinerName"
-								id="addMinerName"
-								onChange={(e) => {
-									const newAddMiner = { id: e.target.value, qty: addMiner.qty };
-									addMiner = newAddMiner;
-								}}
-							>
-								<option key="0" value="" select="true">
-									انتخاب کنید
-								</option>
-								{Object.keys(props.miners).map((miner) => {
-									const name = props.miners[miner].name;
-									return (
-										<option key={name} value={miner}>
-											{name}
-										</option>
-									);
-								})}
-							</select>
-							<label htmlFor="addMinerQty">تعداد</label>
-							<input
-								type="number"
-								id="addMinerQty"
-								name="addMinerQty"
-								onChange={(e) => {
-									const qty = parseInt(e.target.value);
-									const newAddMiner = {
-										id: addMiner.id,
-										qty: qty,
-									};
-									addMiner = newAddMiner;
-								}}
-							/>
-							<button
-								onClick={() => {
-									if (addMiner.id !== "" && addMiner.qty !== 0) {
-										let wasThere = -1;
-										let newInfo = info;
+					<div className="add-miner">
+						<p
+							onClick={() => {
+								setCollapsed(!collapsed);
+							}}
+						>
+							{collapsed ? "-" : "+"}
+							{"  "}
+							{"افزودن دستگاه جدید"}
+						</p>
+						{collapsed && (
+							<div className="form">
+								<label htmlFor="addMinerNmae">نوع دستگاه</label>
+								<select
+									name="addMinerName"
+									id="addMinerName"
+									onChange={(e) => {
+										const newAddMiner = {
+											id: e.target.value,
+											qty: addMiner.qty,
+										};
+										addMiner = newAddMiner;
+									}}
+								>
+									<option key="0" value="" select="true">
+										انتخاب کنید
+									</option>
+									{Object.keys(props.miners).map((miner) => {
+										const name = props.miners[miner].name;
+										return (
+											<option key={name} value={miner}>
+												{name}
+											</option>
+										);
+									})}
+								</select>
+								<label htmlFor="addMinerQty">تعداد</label>
+								<input
+									type="number"
+									id="addMinerQty"
+									name="addMinerQty"
+									onChange={(e) => {
+										const qty = parseInt(e.target.value);
+										const newAddMiner = {
+											id: addMiner.id,
+											qty: qty,
+										};
+										addMiner = newAddMiner;
+									}}
+								/>
+								<button
+									onClick={() => {
+										if (addMiner.id !== "" && addMiner.qty !== 0) {
+											let wasThere = -1;
+											let newInfo = info;
 
-										newInfo.forEach((element) => {
-											if (element.id === addMiner.id) {
-												wasThere = newInfo.indexOf(element);
+											newInfo.forEach((element) => {
+												if (element.id === addMiner.id) {
+													wasThere = newInfo.indexOf(element);
+												}
+											});
+											if (wasThere === -1) {
+												newInfo = [...info, addMiner];
+											} else {
+												newInfo[wasThere] = {
+													id: addMiner.id,
+													qty: newInfo[wasThere].qty + addMiner.qty,
+												};
 											}
-										});
-										if (wasThere === -1) {
-											newInfo = [...info, addMiner];
-										} else {
-											newInfo[wasThere] = {
-												id: addMiner.id,
-												qty: newInfo[wasThere].qty + addMiner.qty,
-											};
+											info = newInfo;
+											const newTableData = tableCreator(info, props.miners);
+											setTableData(newTableData);
 										}
-										info = newInfo;
-										const newTableData = tableCreator(info, props.miners);
-										setTableData(newTableData);
-									}
-								}}
-							>
-								+ افزودن{" "}
-							</button>
-						</div>
+									}}
+								>
+									+ افزودن{" "}
+								</button>
+							</div>
+						)}
 					</div>
 				)}
 			</div>
