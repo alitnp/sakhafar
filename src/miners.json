@@ -1,6 +1,6 @@
 {
-	"1": { "name": "antminer-s9", "th": "13.5", "power": 1323 },
-	"2": { "name": "antminer-s11", "th": "19.5", "power": 1530 },
-	"3": { "name": "antminer-s17", "th": "52", "power": 2212 },
-	"4": { "name": "antminer-s19", "th": "93", "power": 3250 }
+	"1": { "name": "Antminer - S9", "th": "13.5", "power": 1323 },
+	"2": { "name": "Antminer - S11", "th": "19.5", "power": 1530 },
+	"3": { "name": "Antminer - S17", "th": "52", "power": 2212 },
+	"4": { "name": "Antminer - S19", "th": "93", "power": 3250 }
 }

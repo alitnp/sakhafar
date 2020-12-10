@@ -14,8 +14,14 @@ const tableCreator = (info, miners) => {
 			<tr key={key}>
 				<td>{key}</td>
 				<td>{miners[element.id].name}</td>
-				<td>{miners[element.id].th}</td>
-				<td>{miners[element.id].power}</td>
+				<td>
+					{miners[element.id].th}
+					{" th"}
+				</td>
+				<td>
+					{miners[element.id].power.toLocaleString()}
+					{" Watt"}
+				</td>
 				<td>{element.qty}</td>
 			</tr>
 		);
@@ -27,13 +33,13 @@ const tableCreator = (info, miners) => {
 let allThs = 0;
 let allPowers = 0;
 let info = "";
-let addMiner = { id: "", qty: 0 };
 
 export default function Miners(props) {
 	if (info === "") info = props.info;
 
 	const initialTable = tableCreator(info, props.miners);
 	const [tableData, setTableData] = useState(initialTable);
+	const [addMiner, setAddMiner] = useState({ id: "", qty: 0 });
 
 	useEffect(() => {}, [props.loggedIn]);
 
@@ -100,7 +106,7 @@ export default function Miners(props) {
 											id: e.target.value,
 											qty: addMiner.qty,
 										};
-										addMiner = newAddMiner;
+										setAddMiner(newAddMiner);
 									}}
 								>
 									<option key="0" value="" select="true">
@@ -116,46 +122,51 @@ export default function Miners(props) {
 									})}
 								</select>
 								<label htmlFor="addMinerQty">تعداد</label>
-								<input
-									type="number"
-									id="addMinerQty"
-									name="addMinerQty"
-									onChange={(e) => {
-										const qty = parseInt(e.target.value);
-										const newAddMiner = {
-											id: addMiner.id,
-											qty: qty,
-										};
-										addMiner = newAddMiner;
-									}}
-								/>
-								<button
-									onClick={() => {
-										if (addMiner.id !== "" && addMiner.qty !== 0) {
-											let wasThere = -1;
-											let newInfo = info;
+								<div>
+									<input
+										type="number"
+										id="addMinerQty"
+										name="addMinerQty"
+										onChange={(e) => {
+											let qty = parseInt(e.target.value);
+											if (qty < 0) qty = 0;
+											const newAddMiner = {
+												id: addMiner.id,
+												qty: qty,
+											};
+											setAddMiner(newAddMiner);
+										}}
+									/>
+									<button
+										onClick={() => {
+											if (addMiner.id !== "" && addMiner.qty !== 0) {
+												let wasThere = -1;
+												let newInfo = info;
 
-											newInfo.forEach((element) => {
-												if (element.id === addMiner.id) {
-													wasThere = newInfo.indexOf(element);
+												newInfo.forEach((element) => {
+													if (element.id === addMiner.id) {
+														wasThere = newInfo.indexOf(element);
+													}
+												});
+												if (wasThere === -1) {
+													newInfo = [...info, addMiner];
+												} else {
+													newInfo[wasThere] = {
+														id: addMiner.id,
+														qty: newInfo[wasThere].qty + addMiner.qty,
+													};
 												}
-											});
-											if (wasThere === -1) {
-												newInfo = [...info, addMiner];
-											} else {
-												newInfo[wasThere] = {
-													id: addMiner.id,
-													qty: newInfo[wasThere].qty + addMiner.qty,
-												};
+												info = newInfo;
+												const newTableData = tableCreator(info, props.miners);
+												setAddMiner({ id: "", qty: 0 });
+												setCollapsed(false);
+												setTableData(newTableData);
 											}
-											info = newInfo;
-											const newTableData = tableCreator(info, props.miners);
-											setTableData(newTableData);
-										}
-									}}
-								>
-									+ افزودن{" "}
-								</button>
+										}}
+									>
+										+
+									</button>
+								</div>
 							</div>
 						)}
 					</div>

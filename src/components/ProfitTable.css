@@ -1,25 +1,46 @@
-table {
+.profit-table table {
 	width: 100%;
 	min-width: 1100px;
 	text-align: center;
 	overflow-x: auto;
 	border-collapse: collapse;
 }
-td,
+.profit-table td,
 th {
 	font-size: 14px;
 	padding: 10px;
 }
-th {
+.profit-table th {
 	height: 55px;
-	background-color: #f2f2f2;
+	background-color: var(--blue-fade);
 }
-td {
+.profit-table td {
 	height: 35px;
 }
-tr:nth-child(even) {
+.profit-table tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
-td:first-child {
+.profit-table td:first-child {
 	width: 2px;
+}
+
+.profit-table .price-cost {
+	display: grid;
+	grid-template-columns: 170px auto;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.profit-table input {
+	border-radius: 5px;
+	outline: none;
+	border-style: solid;
+	border: 1px solid var(--font-grey);
+	width: 100px;
+	margin: auto 10px;
+	height: 30px;
+	padding-right: 10px;
+}
+.profit-table input:focus {
+	border-color: var(--blue);
 }

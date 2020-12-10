@@ -31,10 +31,10 @@ export default function Profit(props) {
 			<div className="initial-info">
 				<p>
 					{`قیمت بیتکوین به دلار : `}
-					{price && price.toLocaleString()}$
+					{price && (price * 1).toLocaleString()}$
 				</p>
 				<p>
-					{`قیمت بیتکوین یه ریال : `}
+					{`قیمت بیتکوین به ریال : `}
 					{(price * rialRate)
 						.toFixed(0)
 						.toString()

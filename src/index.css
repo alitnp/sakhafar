@@ -74,6 +74,7 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	--blue: rgb(30, 129, 206);
+	--blue-fade : rgba(30, 130, 206, 0.1);
 	--bg-white: rgb(249, 247, 246);
 	--bg-grey: rgb(246, 246, 246);
 	--font-black: rgb(32, 32, 32);
@@ -87,3 +88,4 @@ body {
 code {
 	font-family: monospace;
 }
+

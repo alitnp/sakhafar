@@ -16,10 +16,11 @@ export default function ProfitTable(props) {
 	const six = two - four;
 
 	return (
-		<div>
-			<div>
+		<div className="profit-table">
+			<div className="price-cost">
+				<p>{"میزان کارمزد استخر :"}</p>
+
 				<div>
-					{"میزان کارمزد استخر"}
 					<input
 						type="Number"
 						value={poolCost}
@@ -38,8 +39,10 @@ export default function ProfitTable(props) {
 					/>
 					{"%"}
 				</div>
+
+				<p>{"هزینه هر کیلو وات ساعت :"}</p>
+
 				<div>
-					{"هزینه هر کیلو وات ساعت"}
 					<input
 						type="Number"
 						value={powerCost}

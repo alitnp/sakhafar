@@ -41,10 +41,12 @@ th {
 }
 .table-container table th {
 	height: 55px;
-	background-color: #f2f2f2;
+
+	background-color: var(--blue-fade);
 }
 .table-container table td {
 	height: 35px;
+	direction: ltr;
 }
 .table-container table tr:nth-child(even) {
 	background-color: #f2f2f2;
@@ -69,4 +71,82 @@ th {
 
 .miners-container .add-miner .form {
 	margin-top: 5px;
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 10px;
+	align-items: center;
+	justify-content: right;
+}
+
+.miners-container .add-miner p {
+	color: var(--blue);
+	cursor: pointer;
+	max-width: 200px;
+}
+
+.miners-container select {
+	border-radius: 5px;
+	text-align: center;
+	text-align-last: center;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
+	width: 150px;
+	margin: auto 10px;
+	height: 30px;
+}
+.miners-container select::-ms-expand {
+	display: none;
+}
+
+.miners-container select:focus {
+	border-color: var(--blue);
+}
+.miners-container button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	color: var(--blue);
+	border: 1px solid var(--blue);
+	border-radius: 100px;
+	transition: box-shadow 0.3s;
+	box-shadow: 0 0 0 0 rgba(30, 130, 206, 0.267);
+	outline: none;
+}
+.miners-container button:hover {
+	box-shadow: 0 2px 7px 0 rgba(30, 130, 206, 0.411);
+}
+
+.miners-container input {
+	border-radius: 5px;
+	outline: none;
+	border-style: solid;
+	border: 1px solid var(--font-grey);
+	width: 100px;
+	margin: auto 10px;
+	height: 30px;
+	padding-right: 10px;
+}
+.miners-container input:focus {
+	border-color: var(--blue);
+}
+/* Handling different width sizes */
+/* Any device smaller than 600px */
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.miners-container .add-miner .form {
+		grid-template-columns: auto auto auto auto;
+	}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
