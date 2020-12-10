@@ -40,6 +40,7 @@ export default function Miners(props) {
 	const initialTable = tableCreator(info, props.miners);
 	const [tableData, setTableData] = useState(initialTable);
 	const [addMiner, setAddMiner] = useState({ id: "", qty: 0 });
+	const [collapsed, setCollapsed] = useState(false);
 
 	useEffect(() => {}, [props.loggedIn]);
 
@@ -49,7 +50,31 @@ export default function Miners(props) {
 		props.onTotalChange(totals);
 	}, [tableData]);
 
-	const [collapsed, setCollapsed] = useState(false);
+	const addMinerHandler = () => {
+		if (addMiner.id !== "" && addMiner.qty !== 0) {
+			let wasThere = -1;
+			let newInfo = info;
+
+			newInfo.forEach((element) => {
+				if (element.id === addMiner.id) {
+					wasThere = newInfo.indexOf(element);
+				}
+			});
+			if (wasThere === -1) {
+				newInfo = [...info, addMiner];
+			} else {
+				newInfo[wasThere] = {
+					id: addMiner.id,
+					qty: newInfo[wasThere].qty + addMiner.qty,
+				};
+			}
+			info = newInfo;
+			const newTableData = tableCreator(info, props.miners);
+			setAddMiner({ id: "", qty: 0 });
+			setCollapsed(false);
+			setTableData(newTableData);
+		}
+	};
 
 	return (
 		<div className="miners-container">
@@ -127,6 +152,12 @@ export default function Miners(props) {
 										type="number"
 										id="addMinerQty"
 										name="addMinerQty"
+										onKeyUp={(e) => {
+											if (e.key == "Enter") {
+												e.preventDefault();
+												addMinerHandler();
+											}
+										}}
 										onChange={(e) => {
 											let qty = parseInt(e.target.value);
 											if (qty < 0) qty = 0;
@@ -137,35 +168,7 @@ export default function Miners(props) {
 											setAddMiner(newAddMiner);
 										}}
 									/>
-									<button
-										onClick={() => {
-											if (addMiner.id !== "" && addMiner.qty !== 0) {
-												let wasThere = -1;
-												let newInfo = info;
-
-												newInfo.forEach((element) => {
-													if (element.id === addMiner.id) {
-														wasThere = newInfo.indexOf(element);
-													}
-												});
-												if (wasThere === -1) {
-													newInfo = [...info, addMiner];
-												} else {
-													newInfo[wasThere] = {
-														id: addMiner.id,
-														qty: newInfo[wasThere].qty + addMiner.qty,
-													};
-												}
-												info = newInfo;
-												const newTableData = tableCreator(info, props.miners);
-												setAddMiner({ id: "", qty: 0 });
-												setCollapsed(false);
-												setTableData(newTableData);
-											}
-										}}
-									>
-										+
-									</button>
+									<button onClick={addMinerHandler}>+</button>
 								</div>
 							</div>
 						)}

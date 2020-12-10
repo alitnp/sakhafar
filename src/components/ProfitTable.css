@@ -4,6 +4,7 @@
 	text-align: center;
 	overflow-x: auto;
 	border-collapse: collapse;
+	margin-top: 15px;
 }
 .profit-table td,
 th {
@@ -26,7 +27,7 @@ th {
 
 .profit-table .price-cost {
 	display: grid;
-	grid-template-columns: 170px auto;
+	grid-template-columns: auto;
 	gap: 10px;
 	margin-bottom: 15px;
 }
@@ -43,4 +44,19 @@ th {
 }
 .profit-table input:focus {
 	border-color: var(--blue);
+}
+
+@media only screen and (min-width: 600px) {
+	.profit-table .price-cost {
+		grid-template-columns: 170px auto;
+	}
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
