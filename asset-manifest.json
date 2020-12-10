@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "./static/css/main.bfad1374.chunk.css",
-    "main.js": "./static/js/main.57e7d79a.chunk.js",
-    "main.js.map": "./static/js/main.57e7d79a.chunk.js.map",
+    "main.css": "./static/css/main.38a083c7.chunk.css",
+    "main.js": "./static/js/main.d79c93a1.chunk.js",
+    "main.js.map": "./static/js/main.d79c93a1.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.9b393a85.js",
     "runtime-main.js.map": "./static/js/runtime-main.9b393a85.js.map",
     "static/js/2.49e10f9e.chunk.js": "./static/js/2.49e10f9e.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.0a8fe7e5.chunk.js": "./static/js/3.0a8fe7e5.chunk.js",
     "static/js/3.0a8fe7e5.chunk.js.map": "./static/js/3.0a8fe7e5.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.bfad1374.chunk.css.map": "./static/css/main.bfad1374.chunk.css.map",
+    "static/css/main.38a083c7.chunk.css.map": "./static/css/main.38a083c7.chunk.css.map",
     "static/js/2.49e10f9e.chunk.js.LICENSE.txt": "./static/js/2.49e10f9e.chunk.js.LICENSE.txt",
     "static/media/index.css": "./static/media/IRANSansWeb_UltraLight.99c7469d.ttf",
     "static/media/loginImage.a58537b8.jpg": "./static/media/loginImage.a58537b8.jpg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.9b393a85.js",
     "static/js/2.49e10f9e.chunk.js",
-    "static/css/main.bfad1374.chunk.css",
-    "static/js/main.57e7d79a.chunk.js"
+    "static/css/main.38a083c7.chunk.css",
+    "static/js/main.d79c93a1.chunk.js"
   ]
 }
